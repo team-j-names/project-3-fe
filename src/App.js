@@ -1,12 +1,17 @@
 import './App.css';
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import ProjectGalleryPage from './Components/ProjectGalleryPage';
 import ProjectPage from './Components/ProjectPage';
 
 function App() {
   return (
     <div>
+
+      <Link to="/projects">
+        <h1>HOMEPAGE</h1>
+      </Link>
+
       <Route path="/projects" exact render={() => 
         <ProjectGalleryPage/>}/>
 
