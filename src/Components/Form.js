@@ -30,8 +30,9 @@ const Form = () => {
         title: "",
         author: "",
         email: "",
-        image: "",
-        description: ""
+        technologies: "",
+        description: "",
+        image: ""
     }
     const [formData, setFormData] = useState(formFields)
 
@@ -46,7 +47,7 @@ const Form = () => {
                 newForm.author = value
                 break;
             case 2:
-                newForm.image = value
+                newForm.technologies = value
                 break;
             case 3:
                 newForm.description = value
@@ -95,6 +96,14 @@ const Form = () => {
                     onChange={event => updateField(1, event.target.value)}
                     placeholder="">
                 </input>
+
+                <label htmlFor="technologies">Technologies Used</label>
+                <input type="text"
+                    value={formData.author}
+                    onChange={event => updateField(2, event.target.value)}
+                    placeholder="">
+                </input>
+
                 <label htmlFor="desription">Description</label>
                 <input type="textarea"
                     rows={4}
@@ -103,6 +112,7 @@ const Form = () => {
                     onChange={event => updateField(3, event.target.value)}
                     placeholder="">
                 </input>
+                <br />
                 <label htmlFor="image">Select an Image</label>
                 {/* <input type="text"
                     value={formData.image}
