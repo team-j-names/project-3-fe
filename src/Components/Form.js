@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 // CONSTRAINTS
 // only authenticated user can edit/ submit a project
 // user can only edit/delete the projects attached to their user name
@@ -79,7 +80,7 @@ const Form = () => {
     }
 
     return (
-        <div>
+        <div className="formWrapper">
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Project Title</label>
@@ -94,18 +95,21 @@ const Form = () => {
                     onChange={event => updateField(1, event.target.value)}
                     placeholder="">
                 </input>
-                <label htmlFor="image">Image </label>
-                <input type="text"
-                    value={formData.image}
-                    onChange={event => updateField(2, event.target.value)}
-                    placeholder="">
-                </input>
                 <label htmlFor="desription">Description</label>
-                <input type="text"
+                <input type="textarea"
+                    rows={4}
+                    cols={50}
                     value={formData.description}
                     onChange={event => updateField(3, event.target.value)}
                     placeholder="">
                 </input>
+                <label htmlFor="image">Select an Image</label>
+                {/* <input type="text"
+                    value={formData.image}
+                    onChange={event => updateField(2, event.target.value)}
+                    placeholder="">
+                </input> */}
+                <input type="file" name="image" />
                 <input type="submit" value="submit" />
             </form>
 
