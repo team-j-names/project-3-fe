@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 // only authenticated user can edit/ submit a project
 // user can only edit/delete the projects attached to their user name
 // limit characters in form fields...?
+// disallow duplicate project titles (hence duplicate project submissions)
 //
 // FORM
 // for submissions, user fills form and submits (http: POST )
@@ -24,7 +25,6 @@ import React, { useEffect, useState } from 'react';
 
 const Form = () => {
 
-
     const formFields = {
         title: "",
         author: "",
@@ -32,12 +32,10 @@ const Form = () => {
         image: "",
         description: ""
     }
-
-
     const [formData, setFormData] = useState(formFields)
 
+    // Select input field triggering the onChange and update it in state
     function updateField(field, value) {
-
         let newForm = Object.assign({}, formData)
         switch (field) {
             case 0:
@@ -60,6 +58,13 @@ const Form = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        const url = ``
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+
+            })
+            .catch()
     }
 
     return (
@@ -69,25 +74,25 @@ const Form = () => {
                 <label htmlFor="title">Project Title</label>
                 <input type="text"
                     value={formData.title}
-                    onChange={e => updateField(0, e.target.value)}
+                    onChange={event => updateField(0, event.target.value)}
                     placeholder="">
                 </input>
                 <label htmlFor="author">Author</label>
                 <input type="text"
                     value={formData.author}
-                    onChange={e => updateField(1, e.target.value)}
+                    onChange={event => updateField(1, event.target.value)}
                     placeholder="">
                 </input>
                 <label htmlFor="image">Image </label>
                 <input type="text"
                     value={formData.image}
-                    onChange={e => updateField(2, e.target.value)}
+                    onChange={event => updateField(2, event.target.value)}
                     placeholder="">
                 </input>
                 <label htmlFor="desription">Description</label>
                 <input type="text"
                     value={formData.description}
-                    onChange={e => updateField(3, e.target.value)}
+                    onChange={event => updateField(3, event.target.value)}
                     placeholder="">
                 </input>
                 <input type="submit" value="submit" />
