@@ -57,12 +57,23 @@ const Form = () => {
     }
 
     function handleSubmit(event) {
+        // UPDATE
+        // ID will be needed...
+        // get _id from displayed item when clicked
+        // populate formData state with details from db
+        // send back updated info via PATCH request to update db
+
+        //DELETE
+        // get the id
+        // send DELETE request along with _id
+
         event.preventDefault();
-        const url = ``
+        // Testing with local db
+        const url = `http://localhost:3000/`
         fetch(url)
             .then(res => res.json())
             .then(data => {
-
+                console.log(data)
             })
             .catch()
     }
