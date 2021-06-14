@@ -7,7 +7,8 @@ const ProjectGalleryPage = () => {
     const [projectList, setProjectList] = useState()
 
     useEffect(() => {
-        const url = `http://localhost:3000/`;
+        // const url = `http://localhost:3000/`;
+        const url = `https://team-j-name-project-be.herokuapp.com/projects`
 
         fetch(url)
             .then(res => res.json())
@@ -33,7 +34,7 @@ const ProjectGalleryPage = () => {
 
                     return (
 
-                        <Link to={`/${project._id}`}>
+                        <Link to={`projects/${project._id}`}>
                             <ProjectCard project={project} />
                         </Link>
 
