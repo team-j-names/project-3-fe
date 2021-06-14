@@ -31,6 +31,9 @@ const Form = () => {
         author: "",
         email: "",
         technologies: "",
+        githubURl: "",
+        deployedUrl: "",
+        additionalUrl: "",
         description: "",
         image: ""
     }
@@ -50,6 +53,15 @@ const Form = () => {
                 newForm.technologies = value
                 break;
             case 3:
+                newForm.githubUrl = value
+                break;
+            case 4:
+                newForm.deployedUrl = value
+                break;
+            case 5:
+                newForm.additionalUrl = value
+                break;
+            case 6:
                 newForm.description = value
                 break;
             default:
@@ -96,20 +108,38 @@ const Form = () => {
                     onChange={event => updateField(1, event.target.value)}
                     placeholder="">
                 </input>
-
                 <label htmlFor="technologies">Technologies Used</label>
                 <input type="text"
                     value={formData.technologies}
                     onChange={event => updateField(2, event.target.value)}
                     placeholder="">
                 </input>
+                <label htmlFor="githubUrl">GitHub Repo Link</label>
+                <input type="text"
+                    value={formData.githubUrl}
+                    onChange={event => updateField(3, event.target.value)}
+                    placeholder="">
+                </input>
 
-                <label htmlFor="desription">Description</label>
+                <label htmlFor="deployedUrl">Deployed Link</label>
+                <input type="text"
+                    value={formData.deployedUrl}
+                    onChange={event => updateField(4, event.target.value)}
+                    placeholder="">
+                </input>
+
+                <label htmlFor="additionalUrl">Additional Url</label>
+                <input type="text"
+                    value={formData.additionalUrl}
+                    onChange={event => updateField(5, event.target.value)}
+                    placeholder="">
+                </input>
+                <label htmlFor="desription">Project Description</label>
                 <input type="textarea"
                     rows={4}
                     cols={50}
                     value={formData.description}
-                    onChange={event => updateField(3, event.target.value)}
+                    onChange={event => updateField(6, event.target.value)}
                     placeholder="">
                 </input>
                 <br />
