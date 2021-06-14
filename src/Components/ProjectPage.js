@@ -6,27 +6,28 @@ const ProjectPage = ({ match }) => {
     const [project, setProject] = useState()
 
     useEffect(() => {
-        const url = `http://localhost:3000/projects/${match.params.id}`;
-    
+        const url = `http://localhost:3000/${match.params.id}`;
+        console.log(match.params.id)
+
         fetch(url)
             .then(res => res.json())
             .then(res => {
                 setProject(res)
-                console.log(project)
+                console.log(res)
             })
             .catch(err => {
                 console.error(err);
             });
-        }, [])
+    }, [])
 
 
     if (!project) {
-        return <h1>LOADING...</h1>
+        return <div class="loader"></div>
     }
 
     return (
         <div>
-            <h1>{project.title}</h1>
+            <h3>{project.title}</h3>
             <h3>{project.author}</h3>
             <p>{project.description}</p>
             <a href={project.Github}>GitHub</a>

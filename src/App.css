@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+.formWrapper{
+  min-width: 300px;
+  max-width:500px;
+  padding:30px;
+  /* background-color:#a7d4ff; */
+  margin:20px;
+  border:1px solid #ccc;
+  border-radius: 10px;
+  /* box-shadow: 10px 10px 8px #888888; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+form{
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color:rgb(70, 70, 70)
 }
 
-.App-link {
-  color: #61dafb;
+input:focus, textarea:focus{
+  outline:none;
+}
+form input{
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 1.2em;
+  padding:5px;
+  
+  border:none;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+form input[type="submit"]{
+  width:max-content;
+  padding:8px 16px;
+  background-color: rgb(238, 238, 238);
+  /* border:1px solid rgb(241, 160, 39); */
+  border-radius:5px;
 }
+
+.nav-link ul>li{
+  text-decoration:none;
+  display: inline-block;
+  margin-left: 15px;
+  
+}
+
+/* input[type="file"]{
+  display:none;
+} */
+
+.file-upload {
+  width:max-content;
+  border: 1px solid rgb(240, 229, 229);
+  background-color: rgb(238, 238, 238);
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+
