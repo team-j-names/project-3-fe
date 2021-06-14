@@ -4,39 +4,25 @@ import { Route, Link } from 'react-router-dom'
 import ProjectGalleryPage from './Components/ProjectGalleryPage';
 import ProjectPage from './Components/ProjectPage';
 import Form from './Components/Form';
+import About from './Components/About';
 
 
 function App() {
     return (
-        <div>
-
-
-
-            <div class="t1">
+        <div className="app-wrapper">
+            <div class="header">
                 <h2>Project Gallery</h2>
             </div>
 
             <div class="container">
-
-
                 <nav>
-                    {/* <div class="drop-nav"></div>
-                    <ul>
-                        <li>A Menu Item</li>
-                        <li>A Menu Item</li>
-                        <li>A Menu Item</li>
-                        <li>A Menu Item</li>
-                    </ul> */}
-
-
-
-
                     <div class="dropdown">
                         <button class="dropbtn">≡</button>
                         <div class="dropdown-content">
-                            <a href="#">Home</a>
-                            <a href="#">Gallery</a>
-                            <a href="#">About</a>
+                            <Link to="/projects"> Home </Link>
+                            <Link to="/projects">Project Gallery</Link>
+                            <Link to="/projects/update">Submit Project</Link>
+                            <Link to="/about">About</Link>
                         </div>
                     </div>
 
@@ -44,7 +30,7 @@ function App() {
                         <ul>
                             <li><Link to="/projects"> Home </Link></li>
                             <li><Link to="/projects">Project Gallery</Link></li>
-                            <li><Link to="">Submit Project</Link></li>
+                            <li><Link to="projects/update">Submit Project</Link></li>
                             <li><Link to="/about">About</Link></li>
                         </ul>
                     </div>
@@ -53,7 +39,6 @@ function App() {
                         <button class="loginbtn" id="sign-up">Sign Up</button>
                         <button class="loginbtn" id="login">Log In</button>
                     </div>
-
                 </nav>
 
                 {/* <Link to="/projects/update">Project Form</Link>
@@ -76,6 +61,9 @@ function App() {
                     </Route>
                     <Route path="/projects/details">
                         {/* <ProjectCard /> */}
+                    </Route>
+                    <Route path="/about">
+                        <About />
                     </Route>
                     {/* ------------------------------ */}
 
