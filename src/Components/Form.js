@@ -99,7 +99,7 @@ const Form = () => {
 
                 <label htmlFor="technologies">Technologies Used</label>
                 <input type="text"
-                    value={formData.author}
+                    value={formData.technologies}
                     onChange={event => updateField(2, event.target.value)}
                     placeholder="">
                 </input>
@@ -114,11 +114,13 @@ const Form = () => {
                 </input>
                 <br />
                 <label htmlFor="image">Select an Image</label>
+                <br></br>
                 {/* <input type="text"
                     value={formData.image}
                     onChange={event => updateField(2, event.target.value)}
                     placeholder="">
                 </input> */}
+                {/* <label class="file-upload" htmlFor="file">Choose File</label> */}
                 <input type="file" name="image" />
                 <input type="submit" value="submit" />
             </form>
