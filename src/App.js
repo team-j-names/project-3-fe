@@ -30,7 +30,7 @@ function App() {
                         <ul>
                             <li><Link to="/projects"> Home </Link></li>
                             <li><Link to="/projects">Project Gallery</Link></li>
-                            <li><Link to="projects/update">Submit Project</Link></li>
+                            <li><Link to="/update">Submit Project</Link></li>
                             <li><Link to="/about">About</Link></li>
                         </ul>
                     </div>
@@ -56,7 +56,7 @@ function App() {
                     <Route path="/projects/:id" render={(routerProps) =>
                         <ProjectPage match={routerProps.match} />} />
 
-                    <Route path="/projects/update">
+                    <Route path="/update">
                         <Form />
                     </Route>
                     <Route path="/projects/details">
