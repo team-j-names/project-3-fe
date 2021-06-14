@@ -35,7 +35,8 @@ const Form = () => {
         deployedUrl: "",
         additionalUrl: "",
         description: "",
-        image: ""
+        image: "",
+        _id: ""
     }
     const [formData, setFormData] = useState(formFields)
 
@@ -73,7 +74,7 @@ const Form = () => {
     function handleSubmit(event) {
         // UPDATE
         // ID will be needed...
-        // get _id from displayed item when clicked
+        // get _id from displayed item when clicked -props need to be passed
         // populate formData state with details from db
         // send back updated info via PATCH request to update db
 
@@ -83,14 +84,22 @@ const Form = () => {
 
         event.preventDefault();
         // Testing with local db
-        const url = `http://localhost:3000/`
+
+        const url = `https://team-j-name-project-be.herokuapp.com/projects`
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                setFormData(data)
             })
             .catch()
     }
+
+    //--------------------------fetch for edit ---------------------------
+    // if id is provided, useEffect to fetch() and populate form
+    // if not, provide empty form for submitting new project
+
+
+    //----------------------end of fetch for edit-------------------------
 
     return (
         <div className="formWrapper">
@@ -120,14 +129,12 @@ const Form = () => {
                     onChange={event => updateField(3, event.target.value)}
                     placeholder="">
                 </input>
-
                 <label htmlFor="deployedUrl">Deployed Link</label>
                 <input type="text"
                     value={formData.deployedUrl}
                     onChange={event => updateField(4, event.target.value)}
                     placeholder="">
                 </input>
-
                 <label htmlFor="additionalUrl">Additional Url</label>
                 <input type="text"
                     value={formData.additionalUrl}
