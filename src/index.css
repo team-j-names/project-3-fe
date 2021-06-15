@@ -245,7 +245,7 @@ hr {
   border: 0;
   clear:both;
   display:block;
-  width: 98%;               
+  /* width: 98%;                */
   background-color:#90E0EF;
   height: 1px;
 }
