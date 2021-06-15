@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom'
 import ProjectCard from './ProjectCard';
+import { API_URL } from '../config'
 
 const ProjectGalleryPage = () => {
 
     const [projectList, setProjectList] = useState()
 
     useEffect(() => {
-        // const url = `http://localhost:3000/`;
-        const url = `https://team-j-name-project-be.herokuapp.com/projects`
+        const url = `${API_URL}/projects`
 
         fetch(url)
             .then(res => res.json())

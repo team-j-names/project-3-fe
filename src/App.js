@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Link } from 'react-router-dom'
 import ProjectGalleryPage from './Components/ProjectGalleryPage';
 import ProjectPage from './Components/ProjectPage';
@@ -8,22 +8,24 @@ import About from './Components/About';
 import Login from './Components/Login';
 import Home from './Components/Home'
 import Signup from './Components/Signup';
+import UpdateForm from './Components/UpdateForm';
 
 function App() {
 
+    const [project, setProject] = useState()
     const signUpInstructions = [<><h2>Sign up</h2><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
     const loginInstructions = [<><h2>Login</h2><hr />Enter your username and password to sign in. You can then edit your project or submit a new project. If you are not registered, please <Link to="/signup"><strong>sign up.</strong></Link><hr /></>]
     return (
         <div className="app-wrapper">
-            <div class="header">
+            <div className="header">
                 <h2>Project Gallery</h2>
             </div>
 
-            <div class="container">
+            <div className="container">
                 <nav>
-                    <div class="dropdown">
-                        <button class="dropbtn">≡</button>
-                        <div class="dropdown-content">
+                    <div className="dropdown">
+                        <button className="dropbtn">≡</button>
+                        <div className="dropdown-content">
                             <Link to="/"> Home </Link>
                             <Link to="/projects">Project Gallery</Link>
                             <Link to="/projects/update">Submit Project</Link>
@@ -31,7 +33,7 @@ function App() {
                         </div>
                     </div>
 
-                    <div class="nav-link">
+                    <div className="nav-link">
                         <ul>
                             <li><Link to="/"> Home </Link></li>
                             <li><Link to="/projects">Project Gallery</Link></li>
@@ -40,15 +42,15 @@ function App() {
                         </ul>
                     </div>
 
-                    <div class="login">
+                    <div className="login">
                         <Link to="/signup">
-                            <button class="loginbtn" id="sign-up">Sign Up</button></Link>
+                            <button className="loginbtn" id="sign-up">Sign Up</button></Link>
                         <Link to="/login">
-                            <button class="loginbtn" id="login">Log In</button></Link>
+                            <button className="loginbtn" id="login">Log In</button></Link>
                     </div>
                 </nav>
 
-                <div class="main">
+                <div className="main">
 
                     <Route exact path="/">
                         <Home />
@@ -61,11 +63,16 @@ function App() {
                         <ProjectGalleryPage />} />
 
                     <Route path="/projects/:id" render={(routerProps) =>
-                        <ProjectPage match={routerProps.match} />} />
+                        <ProjectPage match={routerProps.match} project={project} setProject={setProject} />} />
 
                     <Route path="/update">
                         <Form />
                     </Route>
+
+                    <Route path="/projects/:id/edit">
+                        <UpdateForm project={project}/>
+                    </Route>
+
                     <Route path="/projects/details">
                         {/* <ProjectCard /> */}
                     </Route>
