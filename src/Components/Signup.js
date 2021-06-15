@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = (props) => {
+const SignUp = (props) => {
 
     const usernameMaxLength = 15
     const pwdMaxLength = 15
@@ -18,7 +18,7 @@ const Login = (props) => {
         console.log(event)
         console.log(userName)
         console.log(password)
-        const url = `http://localhost:3000/api/signin`
+        const url = `http://localhost:3000/api/signup`
 
         fetch(url, {
             method: 'POST', 
@@ -27,7 +27,7 @@ const Login = (props) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                
             })
             .catch(data => {
 
@@ -60,4 +60,4 @@ const Login = (props) => {
     );
 };
 
-export default Login;
+export default SignUp;

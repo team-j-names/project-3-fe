@@ -7,6 +7,7 @@ import Form from './Components/Form';
 import About from './Components/About';
 import Login from './Components/Login';
 import Home from './Components/Home'
+import Signup from './Components/Signup';
 
 function App() {
 
@@ -53,7 +54,7 @@ function App() {
                         <Home />
                     </Route>
                     <Route path="/signup">
-                        <Login instructions={signUpInstructions} /></Route>
+                        <Signup instructions={signUpInstructions} /></Route>
                     <Route path="/login">
                         <Login instructions={loginInstructions} /></Route>
                     <Route path="/projects" exact render={() =>
