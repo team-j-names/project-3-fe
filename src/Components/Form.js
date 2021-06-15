@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_URL } from '../config'
 
 
 // CONSTRAINTS
@@ -29,57 +30,30 @@ const Form = () => {
     const formFields = {
         title: "",
         author: "",
-        email: "",
         technologies: "",
         githubUrl: "",
         deployedUrl: "",
         additionalUrl: "",
         description: "",
-        image: "",
-        _id: ""
+        imageUrl: ""
     }
     const [formData, setFormData] = useState(formFields)
 
-    // Select input field triggering the onChange and update it in state
-    function updateField(field, value) {
-        let newForm = Object.assign({}, formData)
-        switch (field) {
-            case 0:
-                newForm.title = value
-                break;
-            case 1:
-                newForm.author = value
-                break;
-            case 2:
-                newForm.technologies = value
-                break;
-            case 3:
-                newForm.githubUrl = value
-                break;
-            case 4:
-                newForm.deployedUrl = value
-                break;
-            case 5:
-                newForm.additionalUrl = value
-                break;
-            case 6:
-                newForm.description = value
-                break;
-            default:
-                break;
-        }
-        setFormData(newForm)
-    }
 
+    const handleChange = (event) => {
+        setFormData({...formData, [event.target.id]: event.target.value})
+    }
 
     // ----------------
 
     function handleSubmit(event) {
         event.preventDefault();
-        const url = `https://team-j-name-project-be.herokuapp.com/projects`
+        const url = `${API_URL}/projects`
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(formData),
+            headers: { 'Authorization': `Bearer ${window.localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'}
         })
             .then((response) => response.json())
             .then((result) => {
@@ -127,59 +101,59 @@ const Form = () => {
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Project Title</label>
-                <input type="text"
+                <input id="title" type="text"
                     value={formData.title}
-                    onChange={event => updateField(0, event.target.value)}
-                    placeholder="">
-                </input>
+                    onChange={handleChange}
+                    placeholder=""/>
+                
                 <label htmlFor="author">Author</label>
-                <input type="text"
+                <input id="author" type="text"
                     value={formData.author}
-                    onChange={event => updateField(1, event.target.value)}
-                    placeholder="">
-                </input>
+                    onChange={handleChange}
+                    placeholder=""/>
+                
                 <label htmlFor="technologies">Technologies Used</label>
-                <input type="text"
+                <input id="technologies" type="text"
                     value={formData.technologies}
-                    onChange={event => updateField(2, event.target.value)}
-                    placeholder="">
-                </input>
+                    onChange={handleChange}
+                    placeholder=""/>
+                
                 <label htmlFor="githubUrl">GitHub Repo Link</label>
-                <input type="text"
+                <input id="githubUrl" type="text"
                     value={formData.githubUrl}
-                    onChange={event => updateField(3, event.target.value)}
-                    placeholder="">
-                </input>
+                    onChange={handleChange}
+                    placeholder=""/>
+                
                 <label htmlFor="deployedUrl">Deployed Link</label>
-                <input type="text"
+                <input id="deployedUrl" type="text"
                     value={formData.deployedUrl}
-                    onChange={event => updateField(4, event.target.value)}
-                    placeholder="">
-                </input>
+                    onChange={handleChange}
+                    placeholder=""/>
+                
                 <label htmlFor="additionalUrl">Additional Url</label>
-                <input type="text"
+                <input id="additionalUrl" type="text"
                     value={formData.additionalUrl}
-                    onChange={event => updateField(5, event.target.value)}
-                    placeholder="">
-                </input>
-                <label htmlFor="desription">Project Description</label>
-                <input type="textarea"
+                    onChange={handleChange}
+                    placeholder=""/>
+                
+                <label htmlFor="description">Project Description</label>
+                <textarea id="description"
                     rows={4}
                     cols={50}
                     value={formData.description}
-                    onChange={event => updateField(6, event.target.value)}
-                    placeholder="">
-                </input>
+                    onChange={handleChange}>
+                </textarea>
+                
                 <br />
-                <label htmlFor="image">Select an Image</label>
-                <br></br>
+                {/* <label htmlFor="image">Select an Image</label>
+                <br></br> */}
                 {/* <input type="text"
                     value={formData.image}
                     onChange={event => updateField(2, event.target.value)}
-                    placeholder="">
-                </input> */}
+                    placeholder=""/>
+                 */}
                 {/* <label class="file-upload" htmlFor="file">Choose File</label> */}
-                <input type="file" name="image" />
+                {/* <input type="file" name="image" /> */}
                 <input type="submit" value="submit" />
             </form>
 
