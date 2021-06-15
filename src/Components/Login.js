@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../config'
 
 const Login = (props) => {
 
@@ -18,7 +19,7 @@ const Login = (props) => {
         console.log(event)
         console.log(userName)
         console.log(password)
-        const url = `http://localhost:3000/api/signin`
+        const url = `${API_URL}/signin`
 
         fetch(url, {
             method: 'POST', 
