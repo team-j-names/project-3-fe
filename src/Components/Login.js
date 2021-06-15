@@ -28,6 +28,8 @@ const Login = (props) => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
+                window.localStorage.setItem('token', data.token)
+                window.localStorage.setItem('userId', data.foundUser._id)
             })
             .catch(data => {
 
