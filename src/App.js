@@ -5,9 +5,13 @@ import ProjectGalleryPage from './Components/ProjectGalleryPage';
 import ProjectPage from './Components/ProjectPage';
 import Form from './Components/Form';
 import About from './Components/About';
-
+import Login from './Components/Login';
+import Home from './Components/Home'
 
 function App() {
+
+    const signUpInstructions = [<><h3>Sign up</h3><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
+    const loginInstructions = [<><h3>Login</h3><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
     return (
         <div className="app-wrapper">
             <div class="header">
@@ -19,7 +23,7 @@ function App() {
                     <div class="dropdown">
                         <button class="dropbtn">≡</button>
                         <div class="dropdown-content">
-                            <Link to="/projects"> Home </Link>
+                            <Link to="/"> Home </Link>
                             <Link to="/projects">Project Gallery</Link>
                             <Link to="/projects/update">Submit Project</Link>
                             <Link to="/about">About</Link>
@@ -28,7 +32,7 @@ function App() {
 
                     <div class="nav-link">
                         <ul>
-                            <li><Link to="/projects"> Home </Link></li>
+                            <li><Link to="/"> Home </Link></li>
                             <li><Link to="/projects">Project Gallery</Link></li>
                             <li><Link to="/update">Submit Project</Link></li>
                             <li><Link to="/about">About</Link></li>
@@ -36,8 +40,12 @@ function App() {
                     </div>
 
                     <div class="login">
-                        <button class="loginbtn" id="sign-up">Sign Up</button>
-                        <button class="loginbtn" id="login">Log In</button>
+                        {/* <form className="login-form" style={{ display: "inline-block" }} onSubmit={loginSubmit}> */}
+                        <Link to="/signup">
+                            <button class="loginbtn" id="sign-up">Sign Up</button></Link>
+                        <Link to="/login">
+                            <button class="loginbtn" id="login">Log In</button></Link>
+                        {/* </form> */}
                     </div>
                 </nav>
 
@@ -49,7 +57,13 @@ function App() {
                     {/* <div class="card-wrapper"> */}
 
                     {/* -------------------- */}
-
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/signup">
+                        <Login instructions={signUpInstructions} /></Route>
+                    <Route path="/login">
+                        <Login instructions={loginInstructions} /></Route>
                     <Route path="/projects" exact render={() =>
                         <ProjectGalleryPage />} />
 
