@@ -6,28 +6,33 @@ const ProjectPage = ({ match }) => {
     const [project, setProject] = useState()
 
     useEffect(() => {
-        const url = `http://localhost:3000/projects/${match.params.id}`;
-    
+        const url = `https://team-j-name-project-be.herokuapp.com/projects/${match.params.id}`
+
         fetch(url)
             .then(res => res.json())
             .then(res => {
                 setProject(res)
-                console.log(project)
             })
             .catch(err => {
+                // do something with the error
                 console.error(err);
             });
-        }, [])
+    }, [])
+
 
 
     if (!project) {
-        return <h1>LOADING...</h1>
+        return <div class="loader"></div>
     }
 
     return (
-        <div>
-            <h1>{project.title}</h1>
-            <h3>{project.author}</h3>
+        <div class="project-details-page">
+            <h2>{project.title}</h2>
+            <h3>by {project.author}</h3>
+            <div style={{ backgroundColor: "#EAC45D", height: "100px", width: "100%" }}>
+                {/* image to display */}
+                {/* <img src={project.imgUrl} alt={project.title} height="" /> */}
+            </div>
             <p>{project.description}</p>
             <a href={project.Github}>GitHub</a>
         </div>
