@@ -10,8 +10,8 @@ import Home from './Components/Home'
 
 function App() {
 
-    const signUpInstructions = [<><h3>Sign up</h3><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
-    const loginInstructions = [<><h3>Login</h3><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
+    const signUpInstructions = [<><h2>Sign up</h2><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
+    const loginInstructions = [<><h2>Login</h2><hr />Enter your username and password to sign in. You can then edit your project or submit a new project. If you are not registered, please <Link to="/signup"><strong>sign up.</strong></Link><hr /></>]
     return (
         <div className="app-wrapper">
             <div class="header">
@@ -40,23 +40,15 @@ function App() {
                     </div>
 
                     <div class="login">
-                        {/* <form className="login-form" style={{ display: "inline-block" }} onSubmit={loginSubmit}> */}
                         <Link to="/signup">
                             <button class="loginbtn" id="sign-up">Sign Up</button></Link>
                         <Link to="/login">
                             <button class="loginbtn" id="login">Log In</button></Link>
-                        {/* </form> */}
                     </div>
                 </nav>
 
-                {/* <Link to="/projects/update">Project Form</Link>
-                <br />
-                <Link to="/projects/details">Project Details</Link> */}
-
                 <div class="main">
-                    {/* <div class="card-wrapper"> */}
 
-                    {/* -------------------- */}
                     <Route exact path="/">
                         <Home />
                     </Route>
@@ -79,27 +71,7 @@ function App() {
                     <Route path="/about">
                         <About />
                     </Route>
-                    {/* ------------------------------ */}
 
-                    {/* </div> */}
-
-                    {/* <article class="details">
-
-                        <div class="proj-links">
-                            <div>
-                                <h3>Project links:</h3>
-                                <p>Deployed App</p>
-                                <p>Github Repository</p>
-                            </div>
-                        </div>
-                        <div class="description">
-                            <h3>Description</h3>Velit adipisicing quis id aliqua ex Lorem amet non ea veniam quis. Et velit mollit
-                commodo
-                occaecat labore pariatur ex exercitation non ullamco. Aute ut eu reprehenderit quis excepteur ad sit
-                laborum. Occaecat exercitation elit et laborum aute voluptate ipsum non proident nulla magna ad. Irure
-                voluptate do ad nostrud minim nulla ipsum dolore laboris sit officia ullamco.
-            </div>
-                    </article> */}
                 </div>
 
 
