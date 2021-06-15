@@ -31,7 +31,7 @@ const Form = () => {
         author: "",
         email: "",
         technologies: "",
-        githubURl: "",
+        githubUrl: "",
         deployedUrl: "",
         additionalUrl: "",
         description: "",
@@ -71,28 +71,49 @@ const Form = () => {
         setFormData(newForm)
     }
 
+
+    // ----------------
+
     function handleSubmit(event) {
-        // UPDATE
-        // ID will be needed...
-        // get _id from displayed item when clicked -props need to be passed
-        // populate formData state with details from db
-        // send back updated info via PATCH request to update db
-
-        //DELETE
-        // get the id
-        // send DELETE request along with _id
-
         event.preventDefault();
-        // Testing with local db
-
         const url = `https://team-j-name-project-be.herokuapp.com/projects`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setFormData(data)
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(formData),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('Success:', result);
             })
-            .catch()
-    }
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+
+    // -------------------
+    // function handleSubmit(event) {
+    // UPDATE
+    // ID will be needed...
+    // get _id from displayed item when clicked -props need to be passed
+    // populate formData state with details from db
+    // send back updated info via PATCH request to update db
+
+    //DELETE
+    // get the id
+    // send DELETE request along with _id
+
+    //     event.preventDefault();
+    //     const url = `https://team-j-name-project-be.herokuapp.com/projects`
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setFormData(data)
+    //             console.log(data)
+    //         })
+    //         .catch((error) => {
+    //             console.log('Error', error);
+    //         })
+    // }
 
     //--------------------------fetch for edit ---------------------------
     // if id is provided, useEffect to fetch() and populate form
