@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SignUp = () => {
+const SignUp = (props) => {
 
     const usernameMaxLength = 15
     const pwdMaxLength = 15
@@ -29,9 +29,9 @@ const SignUp = () => {
             })
     }
     return (<>
-        <div style={{ width: "90%", padding: "0 0 20px 0 " }}><h3>Sign up</h3><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></div>
+        <div style={{ width: "90%", padding: "0 0 20px 0 " }}>{props.instructions}</div>
 
-        <div style={{ padding: "20px", border: "1px solid #ccc" }}>
+        <div style={{ padding: "30px", border: "1px solid #90E0EF", borderRadius: "10px" }}>
 
             <form onSubmit={handleSubmit}>
                 <label className="label" htmlFor="username">Username</label>
