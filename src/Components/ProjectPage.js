@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom'
 import { API_URL } from '../config'
 import DeleteModal from './DeleteModal';
-
 const ProjectPage = ({ match, project, setProject }) => {
-
     const [show, setShow] = useState(false)
-
     useEffect(() => {
         const url = `${API_URL}/projects/${match.params.id}`
         fetch(url)
@@ -22,19 +19,18 @@ const ProjectPage = ({ match, project, setProject }) => {
     if (!project) {
         return <div className="loader"></div>
     }
-
     if (project.owner === window.localStorage.getItem('userId')) {
         return (
             <div className="project-details-page">
                 <Link to={`/projects/${project._id}/edit`}>
-                <button>
-                    EDIT
-                </button>
+                    <button>
+                        EDIT
+                    </button>
                 </Link>
-                <button onClick={() => {setShow(true)}}>
+                <button onClick={() => { setShow(true) }}>
                     DELETE
                 </button>
-                <DeleteModal show={show} setShow={setShow} project={project}/>
+                <DeleteModal show={show} setShow={setShow} project={project} />
                 <h2>{project.title}</h2>
                 <h3>by {project.author}</h3>
                 <div style={{ backgroundColor: "#EAC45D", height: "100px", width: "100%" }}>
@@ -42,11 +38,11 @@ const ProjectPage = ({ match, project, setProject }) => {
                     {/* <img src={project.imgUrl} alt={project.title} height="" /> */}
                 </div>
                 <p>{project.description}</p>
-                <a href={project.Github}>GitHub</a>
+                <p><a target='_blank' href={project.githubUrl}>GitHub Repo</a></p>
+                <p><a target='blank' href={project.deployedUrl}>Deployed App</a></p>
             </div>
         );
     }
-
     return (
         <div className="project-details-page">
             <h2>{project.title}</h2>
@@ -56,7 +52,8 @@ const ProjectPage = ({ match, project, setProject }) => {
                 {/* <img src={project.imgUrl} alt={project.title} height="" /> */}
             </div>
             <p>{project.description}</p>
-            <a href={project.Github}>GitHub</a>
+            <p><a target='_blank' href={project.githubUrl}>GitHub Repo</a></p>
+            <p><a target='blank' href={project.deployedUrl}>Deployed App</a></p>
         </div>
     );
 };
