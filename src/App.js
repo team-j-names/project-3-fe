@@ -24,7 +24,7 @@ function App() {
     return (
         <div className="app-wrapper">
             <div className="header">
-                <h2>Project Gallery</h2>
+                <h2>Progallery</h2>
             </div>
 
             <div className="container">
