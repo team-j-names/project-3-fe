@@ -31,7 +31,7 @@ const Login = (props) => {
                 window.localStorage.setItem('token', data.token)
                 window.localStorage.setItem('userId', data.foundUser._id)
             })
-            .then(setTimeout(() => {window.location.reload(true)}, 500))
+            // .then(setTimeout(() => {window.location.reload(true)}, 500))
             .catch(data => {
 
             })
