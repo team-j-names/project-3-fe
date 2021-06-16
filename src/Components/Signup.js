@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Route, Redirect } from 'react-router-dom'
+
+import { API_URL } from '../config'
 
 const SignUp = (props) => {
 
@@ -18,7 +21,7 @@ const SignUp = (props) => {
         console.log(event)
         console.log(userName)
         console.log(password)
-        const url = `http://localhost:3000/api/signup`
+        const url = `${API_URL}/api/signup`
 
         fetch(url, {
             method: 'POST', 
@@ -53,7 +56,7 @@ const SignUp = (props) => {
                     maxLength={pwdMaxLength}
                     placeholder="" />
 
-                <input type="submit" value="Submit" />
+                <input onClick={() => <Redirect to="/login"/>} type="submit" value="Submit" />
             </form>
         </div>
     </>

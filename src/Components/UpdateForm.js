@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import { API_URL } from '../config'
 
-const Form = () => {
+const UpdateForm = ({ project, setProject }) => {
 
     const formFields = {
-        title: "",
-        author: "",
-        technologies: "",
-        githubUrl: "",
-        deployedUrl: "",
-        additionalUrl: "",
-        description: "",
-        imageUrl: ""
+        title: project.title,
+        author: project.author,
+        technologies: project.technologies,
+        githubUrl: project.githubUrl,
+        deployedUrl: project.deployedUrl,
+        additionalUrl: project.additionalUrl,
+        description: project.description,
+        imageUrl: project.imageUrl
     }
     const [formData, setFormData] = useState(formFields)
 
@@ -22,9 +23,9 @@ const Form = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        const url = `${API_URL}/projects`
+        const url = `${API_URL}/projects/${project._id}`
         fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify(formData),
             headers: { 'Authorization': `Bearer ${window.localStorage.getItem('token')}`,
             'Content-Type': 'application/json'}
@@ -32,11 +33,16 @@ const Form = () => {
             .then((response) => response.json())
             .then((result) => {
                 console.log('Success:', result);
+                setProject(result)
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     };
+
+    if (!project) {
+        return <div className="loader"></div>
+    }
 
     return (
         <div className="formWrapper">
@@ -103,4 +109,4 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default UpdateForm;
