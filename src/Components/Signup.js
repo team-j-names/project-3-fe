@@ -18,9 +18,6 @@ const SignUp = (props) => {
             "email": userName,
             "password": password
         }
-        console.log(event)
-        console.log(userName)
-        console.log(password)
         const url = `${API_URL}/api/signup`
 
         fetch(url, {
