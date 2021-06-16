@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom'
 import { API_URL } from '../config'
+import DeleteModal from './DeleteModal';
 
 const ProjectPage = ({ match, project, setProject }) => {
+
+    const [show, setShow] = useState(false)
 
     useEffect(() => {
         const url = `${API_URL}/projects/${match.params.id}`
@@ -28,6 +31,10 @@ const ProjectPage = ({ match, project, setProject }) => {
                     EDIT
                 </button>
                 </Link>
+                <button onClick={() => {setShow(true)}}>
+                    DELETE
+                </button>
+                <DeleteModal show={show} setShow={setShow} project={project}/>
                 <h2>{project.title}</h2>
                 <h3>by {project.author}</h3>
                 <div style={{ backgroundColor: "#EAC45D", height: "100px", width: "100%" }}>

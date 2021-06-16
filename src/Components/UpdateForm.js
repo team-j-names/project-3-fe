@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { API_URL } from '../config'
 
-const UpdateForm = ({ project }) => {
+const UpdateForm = ({ project, setProject }) => {
 
     const formFields = {
         title: project.title,
@@ -22,7 +22,7 @@ const UpdateForm = ({ project }) => {
     }
 
     function handleSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         const url = `${API_URL}/projects/${project._id}`
         fetch(url, {
             method: 'PUT',
@@ -33,6 +33,7 @@ const UpdateForm = ({ project }) => {
             .then((response) => response.json())
             .then((result) => {
                 console.log('Success:', result);
+                setProject(result)
             })
             .catch((error) => {
                 console.error('Error:', error);

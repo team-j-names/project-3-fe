@@ -11,7 +11,6 @@ const Login = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-
         const userData = {
             "email": userName,
             "password": password
@@ -19,7 +18,7 @@ const Login = (props) => {
         console.log(event)
         console.log(userName)
         console.log(password)
-        const url = `${API_URL}/signin`
+        const url = `${API_URL}/api/signin`
 
         fetch(url, {
             method: 'POST', 
@@ -32,6 +31,7 @@ const Login = (props) => {
                 window.localStorage.setItem('token', data.token)
                 window.localStorage.setItem('userId', data.foundUser._id)
             })
+            .then(setTimeout(() => {window.location.reload(true)}, 150))
             .catch(data => {
 
             })

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route, Link } from 'react-router-dom'
 import ProjectGalleryPage from './Components/ProjectGalleryPage';
 import ProjectPage from './Components/ProjectPage';
@@ -9,10 +9,16 @@ import Login from './Components/Login';
 import Home from './Components/Home'
 import Signup from './Components/Signup';
 import UpdateForm from './Components/UpdateForm';
+import DeleteModal from './Components/DeleteModal';
+import LoginButtons from './Components/LoginButtons';
 
 function App() {
 
     const [project, setProject] = useState()
+    useEffect(() => {
+        console.log('TEST')
+    }, [LoginButtons])
+    
     const signUpInstructions = [<><h2>Sign up</h2><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
     const loginInstructions = [<><h2>Login</h2><hr />Enter your username and password to sign in. You can then edit your project or submit a new project. If you are not registered, please <Link to="/signup"><strong>sign up.</strong></Link><hr /></>]
     return (
@@ -42,12 +48,7 @@ function App() {
                         </ul>
                     </div>
 
-                    <div className="login">
-                        <Link to="/signup">
-                            <button className="loginbtn" id="sign-up">Sign Up</button></Link>
-                        <Link to="/login">
-                            <button className="loginbtn" id="login">Log In</button></Link>
-                    </div>
+                    <LoginButtons/>
                 </nav>
 
                 <div className="main">
@@ -63,14 +64,18 @@ function App() {
                         <ProjectGalleryPage />} />
 
                     <Route path="/projects/:id" render={(routerProps) =>
-                        <ProjectPage match={routerProps.match} project={project} setProject={setProject} />} />
+                        <ProjectPage match={routerProps.match} project={project} setProject={setProject}/>} />
 
                     <Route path="/update">
                         <Form />
                     </Route>
 
                     <Route path="/projects/:id/edit">
-                        <UpdateForm project={project}/>
+                        <UpdateForm project={project} setProject={setProject}/>
+                    </Route>
+
+                    <Route path="/projects/:id/delete">
+                        <DeleteModal project={project}/>
                     </Route>
 
                     <Route path="/projects/details">
