@@ -19,8 +19,8 @@ function App() {
         console.log('TEST')
     }, [LoginButtons])
     
-    const signUpInstructions = [<><h2>Sign up</h2><hr />Dolore nulla qui sint et consequat culpa irure elit nisi est pariatur tempor aute. Sit magna irure pariatur id enim et sint. Ipsum consectetur dolore enim anim adipisicing pariatur anim pariatur elit quis laborum do do. Mollit commodo nulla quis dolore consequat et commodo duis qui anim adipisicing mollit. Aliqua excepteur tempor officia pariatur Lorem consectetur qui. Amet non cillum duis duis commodo.<hr /></>]
-    const loginInstructions = [<><h2>Login</h2><hr />Enter your username and password to sign in. You can then edit your project or submit a new project. If you are not registered, please <Link to="/signup"><strong>sign up.</strong></Link><hr /></>]
+    const signUpInstructions = [<><h2>Sign up</h2><hr />Enter a new username and password. The page will not refresh.<hr /></>]
+    const loginInstructions = [<><h2>Login</h2><hr />Enter your username and password to sign in. The page will not refresh You can then edit your project or submit a new project. If you are not registered, please <Link to="/signup"><strong>sign up.</strong></Link><hr /></>]
     return (
         <div className="app-wrapper">
             <div className="header">

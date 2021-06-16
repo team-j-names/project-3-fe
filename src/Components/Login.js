@@ -15,9 +15,6 @@ const Login = (props) => {
             "email": userName,
             "password": password
         }
-        console.log(event)
-        console.log(userName)
-        console.log(password)
         const url = `${API_URL}/api/signin`
 
         fetch(url, {
@@ -27,7 +24,6 @@ const Login = (props) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 window.localStorage.setItem('token', data.token)
                 window.localStorage.setItem('userId', data.foundUser._id)
             })
