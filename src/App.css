@@ -1,20 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 .formWrapper{
   min-width: 300px;
   max-width:500px;
   padding:30px;
-  /* background-color:#a7d4ff; */
+  background-color:#d4d4aa;
   margin:20px;
-  border:1px solid #ccc;
+  border:1px solid gray;
   border-radius: 10px;
-  /* box-shadow: 10px 10px 8px #888888; */
+  box-shadow: 10px 10px 8px #888888;
+  font-family: 'Montserrat', sans-serif;
 }
-
 form{
   display:flex;
   flex-direction: column;
   color:rgb(70, 70, 70)
 }
-
 input:focus, textarea:focus{
   outline:none;
 }
@@ -23,31 +23,27 @@ form input{
   margin-top: 5px;
   font-size: 1.2em;
   padding:5px;
-  
   border:none;
-  
+  font-family: 'Montserrat', sans-serif;
 }
-
-
 form input[type="submit"]{
   width:max-content;
   padding:8px 16px;
-  background-color: rgb(238, 238, 238);
-  /* border:1px solid rgb(241, 160, 39); */
-  border-radius:5px;
+  color: gray;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
 }
-
 .nav-link ul>li{
   text-decoration:none;
   display: inline-block;
   margin-left: 15px;
-  
 }
-
 /* input[type="file"]{
   display:none;
-} */
-
+}  */
 .file-upload {
   width:max-content;
   border: 1px solid rgb(240, 229, 229);
@@ -56,6 +52,5 @@ form input[type="submit"]{
   padding: 6px 12px;
   cursor: pointer;
   font-size: 1.1em;
+  font-family: 'Montserrat', sans-serif;
 }
-
-
