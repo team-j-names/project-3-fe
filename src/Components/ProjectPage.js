@@ -19,9 +19,10 @@ const ProjectPage = ({ match, project, setProject }) => {
     if (!project) {
         return <div className="loader"></div>
     }
-    if (project.owner === window.localStorage.getItem('userId')) {
-        return (
-            <div className="project-details-page">
+
+    return (
+        <div className="project-details-page">
+            {project.owner === window.localStorage.getItem('userId') ? <div>
                 <Link to={`/projects/${project._id}/edit`}>
                     <button>
                         EDIT
@@ -31,25 +32,15 @@ const ProjectPage = ({ match, project, setProject }) => {
                     DELETE
                 </button>
                 <DeleteModal show={show} setShow={setShow} project={project} />
-                <h2>{project.title}</h2>
-                <h3>by {project.author}</h3>
-                <div style={{ backgroundColor: "#EAC45D", height: "100px", width: "100%" }}>
-                    {/* image to display */}
-                    {/* <img src={project.imgUrl} alt={project.title} height="" /> */}
-                </div>
-                <p>{project.description}</p>
-                <p><a target='_blank' href={project.githubUrl}>GitHub Repo</a></p>
-                <p><a target='blank' href={project.deployedUrl}>Deployed App</a></p>
-            </div>
-        );
-    }
-    return (
-        <div className="project-details-page">
+            </div> : null}
             <h2>{project.title}</h2>
             <h3>by {project.author}</h3>
-            <div style={{ backgroundColor: "#EAC45D", height: "100px", width: "100%" }}>
+            <div style={{ backgroundColor: "#EAC45D", width: "100%" }}>
                 {/* image to display */}
                 {/* <img src={project.imgUrl} alt={project.title} height="" /> */}
+                <iframe style={{width: "100%", height: "50vh"}}
+                src={project.deployedUrl} title={project.title}>
+                </iframe>
             </div>
             <p>{project.description}</p>
             <p><a target='_blank' href={project.githubUrl}>GitHub Repo</a></p>

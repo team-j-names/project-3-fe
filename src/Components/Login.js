@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { API_URL } from '../config'
+import { useHistory } from 'react-router-dom'
 
 const Login = (props) => {
 
+    const history = useHistory()
     const usernameMaxLength = 15
     const pwdMaxLength = 15
 
@@ -26,6 +28,8 @@ const Login = (props) => {
             .then(data => {
                 window.localStorage.setItem('token', data.token)
                 window.localStorage.setItem('userId', data.foundUser._id)
+                props.setIsLoggedIn(true)
+                history.push('/projects')
             })
             // .then(setTimeout(() => {window.location.reload(true)}, 500))
             .catch(data => {

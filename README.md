@@ -28,6 +28,8 @@ Progallery is an online gallery where anyone can upload and submit their program
 ![Screen Shot 2021-06-16 at 11 37 41 AM](https://user-images.githubusercontent.com/80438770/122249966-45b7f780-ce97-11eb-9bcc-68fccb90b7f3.png)
 ## Unsolved Problems and Major Hurdles
 - Page Redirects
+- UI for login/signup
+- Impliment styled components
 - Image uploading
 - Comments
 - Likes
@@ -36,3 +38,4 @@ Progallery is an online gallery where anyone can upload and submit their program
 - View Projects by users
 - Follow Authors
 - Populate Author with username
+- Aproval process

@@ -14,6 +14,8 @@ import LoginButtons from './Components/LoginButtons';
 
 function App() {
 
+    const [isLoggedIn, setIsLoggedIn] = useState(window.localStorage.getItem('token') ? true : false)
+    console.log(isLoggedIn)
     const [project, setProject] = useState()
     useEffect(() => {
         console.log('TEST')
@@ -48,7 +50,7 @@ function App() {
                         </ul>
                     </div>
 
-                    <LoginButtons/>
+                    <LoginButtons isLoggedIn={isLoggedIn}/>
                 </nav>
 
                 <div className="main">
@@ -59,7 +61,7 @@ function App() {
                     <Route path="/signup">
                         <Signup instructions={signUpInstructions} /></Route>
                     <Route path="/login">
-                        <Login instructions={loginInstructions} /></Route>
+                        <Login instructions={loginInstructions} setIsLoggedIn={setIsLoggedIn}/></Route>
                     <Route path="/projects" exact render={() =>
                         <ProjectGalleryPage />} />
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Route, Redirect } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 
 import { API_URL } from '../config'
 
 const SignUp = (props) => {
 
+    const history = useHistory()
     const usernameMaxLength = 15
     const pwdMaxLength = 15
 
@@ -27,7 +28,7 @@ const SignUp = (props) => {
         })
             .then(response => response.json())
             .then(data => {
-                
+                history.push('/login')
             })
             .catch(data => {
 
@@ -53,7 +54,7 @@ const SignUp = (props) => {
                     maxLength={pwdMaxLength}
                     placeholder="" />
 
-                <input onClick={() => <Redirect to="/login"/>} type="submit" value="Submit" />
+                <input type="submit" value="Submit" />
             </form>
         </div>
     </>

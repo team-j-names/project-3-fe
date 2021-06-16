@@ -2,17 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Login from './Login';
 
-const LoginButtons = () => {
-
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-    useEffect(() => {
-        if(window.localStorage.getItem('token')){
-            setIsLoggedIn(true)
-        } else {
-            setIsLoggedIn(false)
-        }
-    }, [])
+const LoginButtons = ({ isLoggedIn, setIsLoggedIn }) => {
 
     if (isLoggedIn === false) {
         return (
