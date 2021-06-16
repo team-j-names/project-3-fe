@@ -9,6 +9,7 @@ import Login from './Components/Login';
 import Home from './Components/Home'
 import Signup from './Components/Signup';
 import UpdateForm from './Components/UpdateForm';
+import DeleteModal from './Components/DeleteModal';
 
 function App() {
 
@@ -63,14 +64,18 @@ function App() {
                         <ProjectGalleryPage />} />
 
                     <Route path="/projects/:id" render={(routerProps) =>
-                        <ProjectPage match={routerProps.match} project={project} setProject={setProject} />} />
+                        <ProjectPage match={routerProps.match} project={project} setProject={setProject}/>} />
 
                     <Route path="/update">
                         <Form />
                     </Route>
 
                     <Route path="/projects/:id/edit">
-                        <UpdateForm project={project}/>
+                        <UpdateForm project={project} setProject={setProject}/>
+                    </Route>
+
+                    <Route path="/projects/:id/delete">
+                        <DeleteModal project={project}/>
                     </Route>
 
                     <Route path="/projects/details">
